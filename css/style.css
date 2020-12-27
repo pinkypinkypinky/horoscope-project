@@ -5,13 +5,27 @@
 /* Box Model Hack */
 *{
   box-sizing: border-box;
+  
 }
 
 /******************************************
 /* LAYOUT
 /*******************************************/
+body {
+  height: 100vh;
+}
 
-
+#container{
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+  width: 70%;
+  height: 50%;
+  margin: 10% auto 0 auto;
+  border: 1px solid black;
+}
 
 /******************************************
 /* ADDITIONAL STYLES
