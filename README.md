@@ -26,3 +26,8 @@ Aquarius (January 20 - February 18)
 Pisces (February 19 - March 20)
 
 
+GOALS :
+Create our own 'dropdown menus'
+Display Star sign to the DOM
+Display random Paragraph of bullshit to the DOM
+Flowers and colors and whatever
