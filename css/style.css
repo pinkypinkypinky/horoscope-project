@@ -8,6 +8,13 @@
   
 }
 
+.hidden {
+  display: none;
+}
+
+html {
+  font-family: 'Pacifico', cursive;
+}
 /******************************************
 /* LAYOUT
 /*******************************************/
@@ -25,6 +32,29 @@ body {
   height: 50%;
   margin: 10% auto 0 auto;
   border: 1px solid black;
+}
+.button{
+  background-color: #18A558;
+  height: 3rem;
+  width: 3rem;
+  transition: all .4s;
+  border-radius: 5%;
+  
+}
+
+.hover{
+  background-color: #2cedf0;
+  height: 3rem;
+  width: 3rem;
+  transition: all .4s;
+  border-radius: 50%;
+  transform: scale(1.2);
+  box-shadow: 2px 2px rgba(63, 62, 62, 0.466);
+  border-radius: 50%;
+}
+.button, .hover{
+  text-align: center;
+  cursor: pointer;
 }
 
 /******************************************
