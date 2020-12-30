@@ -2,6 +2,8 @@ const datePicker = document.getElementById('datePicker');
  
 const test = document.getElementById('test');
 
+const container = document.getElementById('container');
+
 const placeToShowYourFuture = document.getElementById('placeToShowYourFuture');
 
 const yourStarSign = document.getElementById('yourStarSign');
@@ -10,7 +12,12 @@ const yourFuturePrediciton = document.getElementById('yourFuturePrediciton');
 
 const button = document.getElementById('button');
 
+const hideMe = document.querySelectorAll('.hideMe');
+
+const theTruth = document.querySelectorAll('.theTruth');
+
 let futureHasBeenDisplayed = false;
+
 
 
 const firstSentences = [`You may have to stand by a difficult decision today.`, `Unfortunately things don't always work out the way you plan. `, `Today might be the day you have to heal an old wound. `, `Today you'll remember what it's like to be a child again. `]
@@ -23,7 +30,9 @@ const nextQuestion = [`Is it possible that you're just afraid of your desire? `,
 
 
 button.addEventListener('click', () => {
-    if(datePicker.value.length != 0){
+        let x = 0;
+
+    // if(datePicker.value.length != 0){
         let splitDates = datePicker.value.split('-');
         console.log(splitDates);
         let dateToCompare = Number(splitDates[1] + splitDates[2])
@@ -62,25 +71,50 @@ button.addEventListener('click', () => {
 
         let bullfrog = `Oh wow, you are a ${yourStarSign.innerText}! Well that means...${first} ${second} ${third} ${fourth}Stay Tuned folx.`;
 
+
+        container.classList.replace('crystalBall', 'predictionPrepare');
         yourFuturePrediciton.innerText = bullfrog;
-        datePicker.classList.toggle('hidden');
-        button.classList.toggle('hidden');
-        placeToShowYourFuture.classList.toggle('hidden');
-        yourFuturePrediciton.classList.toggle('hidden');
+        hideMe.forEach(e => e.classList.toggle('hidden'));
+        placeToShowYourFuture.classList.toggle('hidden')
+        if(datePicker.classList.contains('hidden')){
+        container.addEventListener('transitionend', () => {
+        console.log('it is done');
+        x++;
+        console.log(x)
+        if(x >= 1) {
+            container.classList.replace('predictionPrepare', 'predictionBegin');
+            theTruth.forEach(e => e.classList.replace('theTruth', 'theTruthRevealed'))
+        }
+        })
+        }
+
+        
+
+
         futureHasBeenDisplayed = true;
-    }
+    // }
 });
 
 
-button.addEventListener("mouseover", () =>{
-    button.classList.replace('button', 'hover')
 
+
+
+
+
+
+//BUTTON ANIMATION
+button.addEventListener("mouseover", () =>{
+    button.classList.replace('button', 'hover');
+    
+   
     button.onmouseout = () => {
+    
+    
     button.classList.replace('hover', 'button');
     }
+    
+    
 })
 
-let options = ['1. Style the horoscopes ourselves', '2. work on the calc', '3. look at Javascript 30']
 
-console.log(`${options[Math.floor(Math.random() * options.length)]}, ${options[Math.floor(Math.random() * options.length)]}, ${options[Math.floor(Math.random() * options.length)]}, ${options[Math.floor(Math.random() * options.length)]}, ${options[Math.floor(Math.random() * options.length)]}, ${options[Math.floor(Math.random() * options.length)]}, ${options[Math.floor(Math.random() * options.length)]}`)
 
