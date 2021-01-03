@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    	<meta charset="utf-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<meta name="description" content="This is where your description goes">
     	<meta name="keywords" content="one, two, three">
 
@@ -12,30 +13,26 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/mathjs/lib/browser/math.js"></script>
 	</head>
-	
-	
-	<!-- INSTRUCTIONS -->
-	<!-- Build - A horoscope app where the user can enter their birthday and get their horoscope. There should be minimum 12 unique horoscopes. -->
-	
-	
 	<body>
+		<div id='stars'></div>
+			<div id='stars2'></div>
+			<div id='stars3'></div>
+			<div id='title'></div>
 		<section id="container">
-		<input id="datePicker" type="date">
-		
-
-		<section id="button" class="button">
-		</section>
-		
-		<section id="placeToShowYourFuture" class="hidden">
-		<h1 id="yourStarSign"></h1>
-		<p id='yourFuturePrediciton' class="hidden"></p>
-		</section>
-		
-		</section>
-		
-		
+			<h1 class="mainText">Your Astrological prediction</h1>
+			<small class="mainText stars">What is written in the stars?</small>
+			<input id="datePicker" class="mainText" type="date">
+			<small class="mainText">Enter your birthday and ask the horoscope</small>
+			<img src="https://cdn2.iconfinder.com/data/icons/horoscope-6/512/Horoscope-fortunes-prophesy-predict-16-512.png" id="button" class="button"alt="">
+			<small id="reset" class="hidden">Start Over</small>
+			<section id="placeToShowYourFuture" class="hidden">
+				<h2 id="yourStarSign"></h2>
+				<p id='yourFuturePrediciton' ></p>
+			</section>
+		</section>	
 		<script type="text/javascript" src="js/main.js"></script>
-
 	</body>
 </html>

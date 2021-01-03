@@ -1,27 +1,24 @@
+// get elemets from html variables
 const datePicker = document.getElementById('datePicker');
- 
-const test = document.getElementById('test');
-
+const textToHide = document.querySelectorAll('.mainText');
 const placeToShowYourFuture = document.getElementById('placeToShowYourFuture');
-
 const yourStarSign = document.getElementById('yourStarSign');
-
+const reset = document.getElementById('reset');
 const yourFuturePrediciton = document.getElementById('yourFuturePrediciton');
-
 const button = document.getElementById('button');
+// Horoscope sentences randomly convine to make a horoscope paragraph
+const firstSentences = [`New opportunities are on the horizon.`, `There is a change of energy in the air. `, `It's time to get creative and anything is possible. `, `Changes are coming your way. `, `You are taking back your power this time of year.`, `Balance is hard to manage, but not unattainable looking forward.`, `Your internal world is going through a transformation and you should try to seek balance.`]
 
-const firstSentences = [`You may have to stand by a difficult decision today.`, `Unfortunately things don't always work out the way you plan. `, `Today might be the day you have to heal an old wound. `, `Today you'll remember what it's like to be a child again. `]
+const secondSentences = [`Take a step back and think about the relationships that ground you. `, `Consider taking greater risks with your relationships, both platonic and romantic. `, `Reflect on what has been holding you back, and take some chances on that new project at work or a new relationship that presents itself. `, `A fresh start is just around the corner in both your work and home life.`, `The past few weeks have been incredibly busy and the first step to a fresh start is to take care of youself.`, `Luck is certainly on your side, so consider taking a chance on a new adventure.` ]
 
-const secondSentences = [`You could feel an urgent need for stability in your personal life. `, `Time is starting to pass by quicker and quicker every day. `, `For the first time in a long time, you actually feel awake. `, `Your heart aches for a new beginning today. ` ]
+const question = [`Is this the time for new challenges? `, `Is this the time to pursue new opportunities? `, `What and who brings you gratitude? `, `Have you been holding back?`, `Is there ever a right time for anything?`, `What are you searching for and how can we get you to your destination?`]
 
-const question = [`What is really behind this feeling? `, `Is this really true? `, `Do you ever feel like you're at the mercy of the universe? `]
-
-const nextQuestion = [`Is it possible that you're just afraid of your desire? `, `Why can't we just put the past behind us and move forward? `, `Are we human? Or are we dancer? `, `Why does it always rain on me? `]
+const conclusion = [`Today is the day--pursue the path that brings you joy and don't look back. `, `Don't hesitate to take a chance on change, you have so much to gain.`, `Take things step by step as you embark in this new direction. `, `Pause, listen to your internal soul, and think about what feels more right. Then walk in that direction. `, `Cohesion is something you value and coming into your atmosphere soon. Practice patience and trust in the path forward.`]
+// function to pick sing 
 button.addEventListener('click', () => {
     if(datePicker.value.length != 0){
-        let splitDates = datePicker.value.split('-');
-        console.log(splitDates);
-        let dateToCompare = Number(splitDates[1] + splitDates[2])
+        let splitDates = datePicker.value.split('-'); //split the input information to use just month and date. 
+        let dateToCompare = Number(splitDates[1] + splitDates[2])//convert the split array to num and then compare meaning mm/dd and displaying the starsign.
         if(dateToCompare > 1221){
             yourStarSign.innerText = 'Capricorn'  
         }else if(dateToCompare > 1121){
@@ -50,34 +47,28 @@ button.addEventListener('click', () => {
             yourStarSign.innerText = 'Capricorn'
             console.log(dateToCompare);
         }
+        // geting random senteces from arrays to print the horoscope paragraph
         let first = firstSentences[Math.floor(Math.random() * firstSentences.length)]; 
         let second = secondSentences[Math.floor(Math.random() * secondSentences.length)];
         let third = question[Math.floor(Math.random() * question.length)];
-        let fourth = nextQuestion[Math.floor(Math.random() * nextQuestion.length)];
+        let fourth = conclusion[Math.floor(Math.random() * conclusion.length)];
+        // Getting and Printing out the prediction(Horoscope)
+        let prediction = `The stars say you are a ${yourStarSign.innerText}! ${first} ${second} ${third} ${fourth}`;
+        yourFuturePrediciton.innerText = prediction;
 
-        let bullfrog = `Oh wow, you are a ${yourStarSign.innerText}! Well that means...${first} ${second} ${third} ${fourth}Stay Tuned folx.`;
-
-        yourFuturePrediciton.innerText = bullfrog;
-        datePicker.classList.toggle('hidden');
+        // hidding text to display just horoscope,startsugn and button
+        Array.from(textToHide).forEach(element=>element.classList.toggle('hidden'));
         placeToShowYourFuture.classList.toggle('hidden');
-        yourFuturePrediciton.classList.toggle('hidden');
-        if(yourFuturePrediciton.classList.contains("hidden")){
-            button.innerText = ""
-        }else{
-            button.innerText = "TRY AGAIN";
-        }
-        
+        reset.classList.toggle('hidden');
+    
+    }else{//Condition for no input.
+        alert("you must enter your birthday and thake a look to what is written in the stars!")
     }
 });
-
-
+// section-button Animation function 
 button.addEventListener("mouseover", () =>{
     button.classList.replace('button', 'hover')
-
     button.onmouseout = () => {
-    button.classList.replace('hover', 'button');
-
-        
+    button.classList.replace('hover', 'button');   
     }
-})
-
+});
